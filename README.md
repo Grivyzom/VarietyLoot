@@ -1,5 +1,3 @@
-# README.md (Markdown para GitHub)
-
 # VarietyLoot
 
 **VarietyLoot** es un plugin para **Spigot** compatible con **Minecraft 1.20.1 y versiones superiores**.  
