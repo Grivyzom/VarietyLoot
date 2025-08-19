@@ -1,5 +1,5 @@
 name: VarietyLoot
-main: gc.grivyzom.VarietyMain   # Ojo aquí: depende del package
+main: VarietyMain   # Ojo aquí: depende del package
 version: 1.0.0
 api-version: 1.21
 author: Brocolitx
