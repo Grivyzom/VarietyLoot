@@ -1,4 +1,4 @@
-package items;
+package gc.grivyzom.items;
 
 public class ItemDefinition {
 }

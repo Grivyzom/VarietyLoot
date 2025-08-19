@@ -1,8 +1,8 @@
 name: VarietyLoot
-main: VarietyMain.VarietyMain   # Ojo aquí: depende del package
+main: gc.grivyzom.VarietyMain   # Ojo aquí: depende del package
 version: 1.0.0
-api-version: 1.16
-author: TuNombre
+api-version: 1.21
+author: Brocolitx
 description: Plugin VarietyLoot que añade un sistema de loot variado.
 
 commands:
@@ -11,6 +11,7 @@ commands:
     usage: /<command>
     permission: varietyloot.use
     permission-message: No tienes permiso para usar este comando.
+    aliases: [vloot, loot]
 
 permissions:
   varietyloot.use:
