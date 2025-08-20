@@ -1,0 +1,79 @@
+# ==========================================
+#         VARIETYLOOT - MENSAJES
+# ==========================================
+#
+# Archivo de configuración de mensajes para VarietyLoot
+#
+# Colores disponibles:
+# &0 = Negro          &8 = Gris Oscuro
+# &1 = Azul Oscuro    &9 = Azul
+# &2 = Verde Oscuro   &a = Verde
+# &3 = Aqua Oscuro    &b = Aqua
+# &4 = Rojo Oscuro    &c = Rojo
+# &5 = Púrpura        &d = Rosa
+# &6 = Dorado         &e = Amarillo
+# &7 = Gris           &f = Blanco
+#
+# Formatos especiales:
+# &l = Negrita        &o = Cursiva
+# &n = Subrayado      &m = Tachado
+# &k = Ofuscado       &r = Reset
+#
+# Placeholders disponibles:
+# {player} = Nombre del jugador
+# {version} = Versión del plugin
+# {author} = Autor del plugin
+# ==========================================
+
+# Mensajes de consola
+console:
+  startup: "&a[VarietyLoot] &f¡Plugin iniciado correctamente! &7v{version} &fpor &b{author}"
+  shutdown: "&c[VarietyLoot] &f¡Plugin deshabilitado correctamente! &7Gracias por usar VarietyLoot"
+
+# Mensajes generales
+general:
+  no-permission: "&c&l✘ &7No tienes permisos para ejecutar este comando."
+  plugin-reloaded: "&a&l✓ &7¡Configuración recargada correctamente!"
+  unknown-command: "&c&l✘ &7Comando desconocido. Usa &f/varietyloot help &7para ver los comandos disponibles."
+
+# Mensajes de comandos
+commands:
+  help:
+    header: "&8&m                    &r &6&lVarietyLoot &8&m                    "
+    line1: "&e/varietyloot reload &7- &fRecarga la configuración del plugin"
+    line2: "&e/varietyloot give &7- &fObtener ítems personalizados"
+    line3: "&e/varietyloot list &7- &fVer lista de ítems disponibles"
+    footer: "&8&m                                                    "
+
+  reload:
+    success: "&a&l✓ &7¡Configuración de VarietyLoot recargada correctamente!"
+    error: "&c&l✘ &7Error al recargar la configuración. Revisa la consola."
+
+  give:
+    success: "&a&l✓ &7Has recibido &f{item}&7."
+    item-not-found: "&c&l✘ &7El ítem &f{item} &7no existe."
+    usage: "&e&l! &7Uso correcto: &f/varietyloot give <ítem> [cantidad] [jugador]"
+
+  list:
+    header: "&8&m              &r &6&lÍtems Disponibles &8&m              "
+    format: "&7• &f{item} &7- &e{description}"
+    empty: "&c&l✘ &7No hay ítems personalizados disponibles."
+    footer: "&8&m                                              "
+
+# Mensajes de ítems y mecánicas
+items:
+  cooldown: "&c&l✘ &7Debes esperar &f{time} segundos &7antes de usar este ítem nuevamente."
+  no-durability: "&c&l✘ &7Este ítem se ha roto y ya no se puede usar."
+  activated: "&a&l✓ &7Has activado &f{item}&7."
+
+# Mensajes de errores
+errors:
+  config-error: "&c&l✘ &7Error al cargar la configuración. Revisa la consola para más detalles."
+  database-error: "&c&l✘ &7Error de conexión con la base de datos."
+  file-not-found: "&c&l✘ &7No se pudo encontrar el archivo &f{file}&7."
+  invalid-player: "&c&l✘ &7El jugador &f{player} &7no está conectado o no existe."
+
+# Mensajes informativos
+info:
+  first-join: "&a&l¡Bienvenido! &7Este servidor utiliza &6VarietyLoot &7para añadir ítems únicos al juego."
+  tip: "&e&l💡 &7Consejo: Usa &f/varietyloot list &7para ver todos los ítems disponibles."

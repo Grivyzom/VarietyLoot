@@ -1,5 +1,5 @@
 name: VarietyLoot
-main: VarietyMain   # Ojo aquí: depende del package
+main: gc.grivyzom.VarietyMain
 version: 1.0.0
 api-version: 1.21
 author: Brocolitx
@@ -15,5 +15,18 @@ commands:
 
 permissions:
   varietyloot.use:
-    description: Permite usar /loot
+    description: Permite usar /varietyloot
     default: op
+  varietyloot.reload:
+    description: Permite recargar la configuración
+    default: op
+  varietyloot.give:
+    description: Permite dar ítems personalizados
+    default: op
+  varietyloot.admin:
+    description: Acceso completo al plugin
+    default: op
+    children:
+      varietyloot.use: true
+      varietyloot.reload: true
+      varietyloot.give: true
