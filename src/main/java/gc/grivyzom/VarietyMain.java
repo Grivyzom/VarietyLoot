@@ -1,6 +1,7 @@
 package gc.grivyzom;
 
 import gc.grivyzom.commands.VarietyLootCommand;
+import gc.grivyzom.commands.VarietyLootTabCompleter;
 import gc.grivyzom.util.MessageManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,7 +15,6 @@ public class VarietyMain extends JavaPlugin {
         instance = this;
         messageManager = new MessageManager(this);
         messageManager.sendStartupMessage();
-
 
         registerCommands();
     }
@@ -35,8 +35,8 @@ public class VarietyMain extends JavaPlugin {
         return messageManager;
     }
 
-
     private void registerCommands() {
         getCommand("varietyloot").setExecutor(new VarietyLootCommand(this));
+        getCommand("varietyloot").setTabCompleter(new VarietyLootTabCompleter());
     }
 }
