@@ -1,0 +1,156 @@
+# ==========================================
+#         VARIETYLOOT - ÍTEMS
+# ==========================================
+#
+# Archivo de configuración de ítems personalizados
+#
+# Estructura básica de un ítem:
+# items:
+#   id_del_item:
+#     display-name: "Nombre del Ítem"
+#     material: MATERIAL_NAME
+#     lore:
+#       - "Línea 1 del lore"
+#       - "Línea 2 del lore"
+#     custom-model-data: 0
+#     unbreakable: false
+#     glowing: false
+#     enchantments:
+#       sharpness: 1
+#       fire_aspect: 2
+#     cooldown: 5
+#     consumable: false
+#     stackable: true
+#     max-stack-size: 64
+#     permission: "varietyloot.item.id_del_item"
+#     drop-on-death: true
+# ==========================================
+
+items:
+  # Ítem de ejemplo básico
+  flame_sword:
+    display-name: "&c&lEspada Flamígera"
+    material: DIAMOND_SWORD
+    lore:
+      - "&7Una espada forjada en las llamas"
+      - "&7del inframundo que arde eternamente."
+      - ""
+      - "&c⚔ &7Daño base mejorado"
+      - "&6🔥 &7Prende fuego a los enemigos"
+      - ""
+      - "&e&lÍTEM LEGENDARIO"
+    custom-model-data: 1001
+    unbreakable: true
+    glowing: true
+    enchantments:
+      sharpness: 3
+      fire_aspect: 2
+      unbreaking: 3
+    cooldown: 0
+    consumable: false
+    stackable: false
+    max-stack-size: 1
+    permission: "varietyloot.item.flame_sword"
+    drop-on-death: false
+
+  # Ítem consumible de ejemplo
+  healing_apple:
+    display-name: "&a&lManzana Curativa"
+    material: GOLDEN_APPLE
+    lore:
+      - "&7Una manzana bendecida por los dioses"
+      - "&7que restaura la salud al instante."
+      - ""
+      - "&a💚 &7Restaura vida completa"
+      - "&b✨ &7Otorga regeneración temporal"
+      - ""
+      - "&2&lÍTEM RARO"
+    custom-model-data: 2001
+    unbreakable: false
+    glowing: true
+    enchantments: {}
+    cooldown: 30
+    consumable: true
+    stackable: true
+    max-stack-size: 16
+    permission: "varietyloot.item.healing_apple"
+    drop-on-death: true
+
+  # Ítem utilitario de ejemplo
+  teleport_pearl:
+    display-name: "&d&lPerla de Teletransporte"
+    material: ENDER_PEARL
+    lore:
+      - "&7Una perla mágica que permite"
+      - "&7viajar instantáneamente a cualquier lugar."
+      - ""
+      - "&d🌟 &7Teletransporte instantáneo"
+      - "&5⏱ &7Sin daño de caída"
+      - ""
+      - "&5&lÍTEM ÉPICO"
+    custom-model-data: 3001
+    unbreakable: false
+    glowing: true
+    enchantments: {}
+    cooldown: 10
+    consumable: true
+    stackable: true
+    max-stack-size: 8
+    permission: "varietyloot.item.teleport_pearl"
+    drop-on-death: true
+
+  # Ítem de herramienta de ejemplo
+  miners_pickaxe:
+    display-name: "&6&lPico del Minero Legendario"
+    material: NETHERITE_PICKAXE
+    lore:
+      - "&7Un pico forjado por los mejores"
+      - "&7herreros del reino subterráneo."
+      - ""
+      - "&e⛏ &7Rompe bloques al instante"
+      - "&b💎 &7Encuentra minerales raros"
+      - "&a🍀 &7Suerte en la minería mejorada"
+      - ""
+      - "&6&lÍTEM MÍTICO"
+    custom-model-data: 4001
+    unbreakable: true
+    glowing: true
+    enchantments:
+      efficiency: 5
+      fortune: 3
+      mending: 1
+      unbreaking: 3
+    cooldown: 0
+    consumable: false
+    stackable: false
+    max-stack-size: 1
+    permission: "varietyloot.item.miners_pickaxe"
+    drop-on-death: false
+
+  # Ítem de armadura de ejemplo
+  shadow_helmet:
+    display-name: "&8&lCasco de las Sombras"
+    material: NETHERITE_HELMET
+    lore:
+      - "&7Un casco forjado en la oscuridad"
+      - "&7que otorga poderes sombríos."
+      - ""
+      - "&8👁 &7Visión nocturna permanente"
+      - "&7🥷 &7Invisibilidad al agacharse"
+      - "&5🌙 &7Resistencia en la oscuridad"
+      - ""
+      - "&8&lÍTEM MÍSTICO"
+    custom-model-data: 5001
+    unbreakable: true
+    glowing: false
+    enchantments:
+      protection: 4
+      unbreaking: 3
+      mending: 1
+      respiration: 3
+    cooldown: 0
+    consumable: false
+    stackable: false
+    max-stack-size: 1
+    permission: "varietyloot.item.shadow_helmet"
+    drop-on-death: false
