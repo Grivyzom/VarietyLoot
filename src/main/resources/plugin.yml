@@ -1,7 +1,7 @@
 name: VarietyLoot
 main: gc.grivyzom.VarietyMain
 version: 1.0.0
-api-version: 1.21
+api-version: 1.20
 author: Brocolitx
 description: Plugin VarietyLoot que añade un sistema de loot variado.
 
