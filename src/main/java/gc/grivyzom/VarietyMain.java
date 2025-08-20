@@ -6,6 +6,7 @@ import gc.grivyzom.items.ItemRegistry;
 import gc.grivyzom.listeners.ItemEventListener;
 import gc.grivyzom.mechanics.conditions.ConditionChecker;
 import gc.grivyzom.mechanics.detection.ActionDetector;
+import gc.grivyzom.mechanics.parser.MechanicsParser;
 import gc.grivyzom.util.MessageManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -32,7 +33,7 @@ public class VarietyMain extends JavaPlugin {
 
             // 2. Inicializar sistemas de mecánicas
             conditionChecker = new ConditionChecker(this);
-            actionDetector = new ActionDetector(this);
+            actionDetector = new ActionDetector(this, conditionChecker);
 
             // 3. Registrar listeners de eventos
             eventListener = new ItemEventListener(this, actionDetector);

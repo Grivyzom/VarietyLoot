@@ -1,33 +1,129 @@
 # ==========================================
 #         VARIETYLOOT - ÍTEMS
 # ==========================================
-#
-# Archivo de configuración de ítems personalizados
-#
-# Estructura básica de un ítem:
-# items:
-#   id_del_item:
-#     display-name: "Nombre del Ítem"
-#     material: MATERIAL_NAME
-#     lore:
-#       - "Línea 1 del lore"
-#       - "Línea 2 del lore"
-#     custom-model-data: 0
-#     unbreakable: false
-#     glowing: false
-#     enchantments:
-#       sharpness: 1
-#       fire_aspect: 2
-#     cooldown: 5
-#     consumable: false
-#     stackable: true
-#     max-stack-size: 64
-#     permission: "varietyloot.item.id_del_item"
-#     drop-on-death: true
-# ==========================================
 
 items:
-  # Ítem de ejemplo básico
+  # Bastón de teletransporte
+  teleport_staff:
+    display-name: "&d&lBastón Arcano"
+    material: STICK
+    lore:
+      - "&7Un bastón imbuido con magia arcana"
+      - "&7que permite el teletransporte instantáneo."
+      - ""
+      - "&d🌟 &7Teletransporte hacia adelante"
+      - "&5⏱ &7Cooldown: 30 segundos"
+      - "&c⚠ &7Requiere nivel 10+"
+    custom-model-data: 1001
+    cooldown: 30
+    consumable: false
+    stackable: false
+    max-stack-size: 1
+    permission: "varietyloot.item.teleport_staff"
+    # NUEVA SECCIÓN: Mecánicas
+    mechanics:
+      right_click:
+        conditions:
+          - "level_above:10"
+          - "is_sneaking"
+        actions:
+          - type: "teleport_forward"
+            distance: 10
+          - type: "consume_experience"
+            levels: 2
+          - type: "play_sound"
+            sound: "ENTITY_ENDERMAN_TELEPORT"
+            volume: 1.0
+            pitch: 1.2
+          - type: "spawn_particles"
+            particle: "PORTAL"
+            amount: 30
+          - type: "send_message"
+            message: "&d¡Teletransporte realizado!"
+
+  # Ítem especial de ejemplo
+  mi_item_especial:
+    display-name: "&c&lEspada Mágica"
+    material: DIAMOND_SWORD
+    lore:
+      - "&7Una espada con poderes místicos"
+      - "&7que reacciona al combate."
+      - ""
+      - "&c⚔ &7Bonus de daño en combate"
+      - "&a💚 &7Curación al atacar"
+    custom-model-data: 2001
+    cooldown: 5
+    consumable: false
+    stackable: false
+    mechanics:
+      attack_entity:
+        conditions:
+          - "health_percentage_above:50"
+          - "has_permission:magic.use"
+        actions:
+          - type: "damage_boost"
+            value: 5.0
+          - type: "apply_potion"
+            effect: "fire_resistance"
+            duration: 10
+            amplifier: 0
+          - type: "play_sound"
+            sound: "ENTITY_PLAYER_ATTACK_CRIT"
+          - type: "spawn_particles"
+            particle: "CRIT"
+            amount: 15
+      right_click:
+        conditions:
+          - "health_below:15"
+        actions:
+          - type: "heal_player"
+            value: 4.0
+          - type: "play_sound"
+            sound: "ENTITY_PLAYER_LEVELUP"
+          - type: "send_message"
+            message: "&a¡Has sido curado por la magia!"
+
+  # Poción de curación nocturna
+  night_healing_potion:
+    display-name: "&b&lPoción Lunar"
+    material: POTION
+    lore:
+      - "&7Una poción bendecida por la luna"
+      - "&7que solo funciona durante la noche."
+      - ""
+      - "&b🌙 &7Solo activa de noche"
+      - "&a💚 &7Curación poderosa"
+      - "&e✨ &7Regeneración temporal"
+    custom-model-data: 3001
+    cooldown: 60
+    consumable: true
+    stackable: true
+    max-stack-size: 16
+    mechanics:
+      consume:
+        conditions:
+          - "is_night"
+          - "health_below:15"
+        actions:
+          - type: "heal_player"
+            value: 20
+          - type: "apply_potion"
+            effect: "regeneration"
+            duration: 30
+            amplifier: 2
+          - type: "apply_potion"
+            effect: "absorption"
+            duration: 60
+            amplifier: 1
+          - type: "play_sound"
+            sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+          - type: "spawn_particles"
+            particle: "HEART"
+            amount: 20
+          - type: "send_message"
+            message: "&b¡La luna te ha bendecido!"
+
+  # Ítems de ejemplo existentes (mantenidos)
   flame_sword:
     display-name: "&c&lEspada Flamígera"
     material: DIAMOND_SWORD
@@ -46,14 +142,27 @@ items:
       sharpness: 3
       fire_aspect: 2
       unbreaking: 3
-    cooldown: 0
+    cooldown: 3
     consumable: false
     stackable: false
     max-stack-size: 1
     permission: "varietyloot.item.flame_sword"
     drop-on-death: false
+    mechanics:
+      attack_entity:
+        conditions:
+          - "target_health_below:20"
+        actions:
+          - type: "set_fire"
+            duration: 8
+          - type: "damage_boost"
+            value: 3.0
+          - type: "play_sound"
+            sound: "ITEM_FIRECHARGE_USE"
+          - type: "spawn_particles"
+            particle: "FLAME"
+            amount: 25
 
-  # Ítem consumible de ejemplo
   healing_apple:
     display-name: "&a&lManzana Curativa"
     material: GOLDEN_APPLE
@@ -75,8 +184,29 @@ items:
     max-stack-size: 16
     permission: "varietyloot.item.healing_apple"
     drop-on-death: true
+    mechanics:
+      consume:
+        conditions:
+          - "health_below:18"
+        actions:
+          - type: "heal_player"
+            value: 20
+          - type: "apply_potion"
+            effect: "regeneration"
+            duration: 10
+            amplifier: 1
+          - type: "apply_potion"
+            effect: "absorption"
+            duration: 30
+            amplifier: 0
+          - type: "play_sound"
+            sound: "ENTITY_PLAYER_BURP"
+          - type: "spawn_particles"
+            particle: "HEART"
+            amount: 15
+          - type: "send_message"
+            message: "&a¡Te sientes completamente restaurado!"
 
-  # Ítem utilitario de ejemplo
   teleport_pearl:
     display-name: "&d&lPerla de Teletransporte"
     material: ENDER_PEARL
@@ -98,8 +228,23 @@ items:
     max-stack-size: 8
     permission: "varietyloot.item.teleport_pearl"
     drop-on-death: true
+    mechanics:
+      right_click:
+        conditions:
+          - "level_above:5"
+        actions:
+          - type: "teleport_forward"
+            distance: 15
+          - type: "apply_potion"
+            effect: "slow_falling"
+            duration: 5
+            amplifier: 0
+          - type: "play_sound"
+            sound: "ENTITY_ENDERMAN_TELEPORT"
+          - type: "spawn_particles"
+            particle: "PORTAL"
+            amount: 50
 
-  # Ítem de herramienta de ejemplo
   miners_pickaxe:
     display-name: "&6&lPico del Minero Legendario"
     material: NETHERITE_PICKAXE
@@ -126,8 +271,21 @@ items:
     max-stack-size: 1
     permission: "varietyloot.item.miners_pickaxe"
     drop-on-death: false
+    mechanics:
+      break_block:
+        conditions:
+          - "y_below:64"
+        actions:
+          - type: "apply_potion"
+            effect: "haste"
+            duration: 30
+            amplifier: 1
+          - type: "play_sound"
+            sound: "BLOCK_ANVIL_USE"
+          - type: "spawn_particles"
+            particle: "CRIT"
+            amount: 10
 
-  # Ítem de armadura de ejemplo
   shadow_helmet:
     display-name: "&8&lCasco de las Sombras"
     material: NETHERITE_HELMET
@@ -154,3 +312,27 @@ items:
     max-stack-size: 1
     permission: "varietyloot.item.shadow_helmet"
     drop-on-death: false
+    mechanics:
+      on_equip:
+        actions:
+          - type: "apply_potion"
+            effect: "night_vision"
+            duration: -1
+            amplifier: 0
+      on_unequip:
+        actions:
+          - type: "remove_potion"
+            effect: "night_vision"
+      sneak:
+        conditions:
+          - "is_night"
+        actions:
+          - type: "apply_potion"
+            effect: "invisibility"
+            duration: 5
+            amplifier: 0
+          - type: "play_sound"
+            sound: "ENTITY_BAT_TAKEOFF"
+          - type: "spawn_particles"
+            particle: "SMOKE_NORMAL"
+            amount: 15

@@ -5,6 +5,7 @@ import gc.grivyzom.items.ItemDefinition;
 import gc.grivyzom.mechanics.TriggerType;
 import gc.grivyzom.mechanics.actions.Action;
 import gc.grivyzom.mechanics.actions.ActionContext;
+import gc.grivyzom.mechanics.conditions.ConditionChecker;
 import gc.grivyzom.util.Cooldowns;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -22,6 +23,7 @@ public class ActionDetector {
 
     private final VarietyMain plugin;
     private final Cooldowns cooldownManager;
+    private final ConditionChecker conditionChecker;
 
     // Cache para optimizar verificaciones frecuentes
     private final ConcurrentHashMap<String, Boolean> triggerCache;
@@ -29,9 +31,10 @@ public class ActionDetector {
     // Control de ejecución para triggers periódicos
     private final ConcurrentHashMap<String, BukkitRunnable> periodicTasks;
 
-    public ActionDetector(VarietyMain plugin) {
+    public ActionDetector(VarietyMain plugin, ConditionChecker conditionChecker) {
         this.plugin = plugin;
         this.cooldownManager = new Cooldowns();
+        this.conditionChecker = conditionChecker;
         this.triggerCache = new ConcurrentHashMap<>();
         this.periodicTasks = new ConcurrentHashMap<>();
     }
@@ -268,6 +271,7 @@ public class ActionDetector {
 
         for (Action action : actions) {
             try {
+                // Verificar si la acción puede ejecutarse (incluyendo sus condiciones específicas)
                 if (action.canExecute(context)) {
                     if (action.getDelay() > 0) {
                         // Ejecutar con retraso
